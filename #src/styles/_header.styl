@@ -1,0 +1,131 @@
+.header {
+	position absolute;
+	top 0;
+	left 0;
+	width 100%;
+	z-index 1;
+
+	&__body {
+		padding 55px 65px;
+		flex-set row nowrap;
+		align-items center;
+		justify-content space-between;
+
+		@media (max-width 1050px) {
+			display grid;
+			grid-template 'logo account-nav' auto 'nav nav' auto / 1fr 1fr;
+			gap 15px;
+		}
+
+		@media (max-width 768px) {
+			padding 30px 20px;
+		}
+	}
+}
+
+.navmenu {
+	grid-area nav;
+
+	@media (max-width 1050px) {
+		margin 0 -8px;
+	}
+
+	&__body {
+	}
+
+	&__list {
+		flex-set row wrap;
+		notLastChildMargin 0 60px 0 0;
+
+		@media (max-width 1400px) {
+			notLastChildMargin 0 20px 0 0;
+		}
+
+		@media (max-width 768px) {
+			notLastChildMargin 0 0 0 0;
+		}
+
+		@media (max-width 426px) {
+			justify-content end;
+		}
+
+		li {
+			a, button {
+				position relative;
+				display inline-block;
+				padding 8px 12px;
+				color var(--text-c);
+				text-transform uppercase;
+				font-weight 600;
+				font-size rem(24);
+				transition all .3s ease 0s;
+
+				@media (max-width 1400px) {
+					font-size rem(18);
+				}
+
+				&:after {
+					position absolute;
+					top 100%;
+					left 50%;
+					display inline-block;
+					width 70%;
+					height .15em;
+					border-radius 2px;
+					background #F6D72F;
+					transform translate3d(-50%, 30%, 0);
+					transition all .3s ease 0s;
+					content '';
+					hide();
+				}
+
+				&.active, &:hover, &:focus {
+					color #F6D72F;
+
+					&:after {
+						transform translate3d(-50%, -50%, 0);
+						opacity 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+.accont-navmenu {
+	grid-area account-nav;
+
+	&__body {
+		flex-set row nowrap;
+		justify-content end;
+		align-items center;
+		notLastChildMargin 0 60px 0 0;
+
+		@media (max-width 768px) {
+			notLastChildMargin 0 30px 0 0;
+		}
+	}
+}
+
+.account-signup {
+	@media (max-width 426px) {
+		padding .7em 1em !important;
+	}
+}
+
+.account-prev {
+}
+
+.logo {
+	grid-area logo;
+	z-index 10;
+	block-size 259px 50px;
+
+	@media (max-width 1400px) {
+		block-size 181px 35px;
+	}
+
+	@media (max-width 426px) {
+		block-size 129px 25px;
+	}
+}
